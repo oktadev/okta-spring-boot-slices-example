@@ -5,10 +5,10 @@ import javax.persistence.*
 @Entity
 @Table(
     indexes = [
-        Index(columnList = "name", unique = true)
+        Index(columnList = "name", unique = false)
     ]
 )
-data class Country(
+data class StudentScore(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     val id: Long,
@@ -17,5 +17,5 @@ data class Country(
     val name: String,
 
     @Column
-    val population: Int
+    val score: Int
 )

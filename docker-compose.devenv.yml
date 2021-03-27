@@ -1,0 +1,21 @@
+version: "3.9"
+
+###################
+### Docker compose for the demo project containing postgres database
+### Run it locally:
+### $ docker-compose -f docker-compose.devenv.yml
+
+services:
+  db:
+    image: postgres:13.2
+    ports:
+      - 5432
+    volumes:
+      - okta_test_slices_demo_posgress_volume:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=demodb
+      - POSTGRES_USER=demouser
+      - POSTGRES_PASSWORD=demopass
+
+volumes:
+  okta_test_slices_demo_posgress_volume: {}

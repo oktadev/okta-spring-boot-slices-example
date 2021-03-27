@@ -1,11 +1,14 @@
 package com.example.okta.testslices.entity
 
+import org.hibernate.annotations.CreationTimestamp
+import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
 @Table(
     indexes = [
-        Index(columnList = "name", unique = false)
+        Index(columnList = "score"),
+        Index(columnList = "name")
     ]
 )
 data class StudentScore(
@@ -17,5 +20,9 @@ data class StudentScore(
     val name: String,
 
     @Column
-    val score: Int
+    val score: Int,
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    val createdAt: LocalDateTime = LocalDateTime.now()
 )

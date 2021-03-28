@@ -1,7 +1,6 @@
 package com.example.okta.testslices.http
 
-import com.example.okta.testslices.repository.StudentScoreRepository
-import org.junit.jupiter.api.Assertions.*
+import com.example.okta.testslices.repository.ViewersRepository
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
@@ -10,13 +9,13 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 
-@WebMvcTest(StudentsRestController::class)
-internal class StudentsRestControllerTest {
+@WebMvcTest(VisitCounterController::class)
+internal class VisitCounterControllerTest {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
     @MockBean
-    private lateinit var studentScoreRepository: StudentScoreRepository
+    private lateinit var viewersRepository: ViewersRepository
 
     @Test
     fun `can get all without as a guest`() {

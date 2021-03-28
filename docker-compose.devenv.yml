@@ -9,7 +9,7 @@ services:
   db:
     image: postgres:13.2
     ports:
-      - 5432
+      - 5432:5432
     volumes:
       - okta_test_slices_demo_posgress_volume:/var/lib/postgresql/data
     environment:

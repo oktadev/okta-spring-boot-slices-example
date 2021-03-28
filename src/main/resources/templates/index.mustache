@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visit counter</title>
+</head>
+<body>
+
+<h2>G'day, {{username}}!</h2>
+
+{{totalVisits}} visits so far:
+<ul>
+    {{#visitors}}
+        <li>{{name}}: {{count}}</li>
+    {{/visitors}}
+</ul>
+
+</body>
+</html>

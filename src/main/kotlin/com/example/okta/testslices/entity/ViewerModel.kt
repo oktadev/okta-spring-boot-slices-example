@@ -1,28 +1,32 @@
 package com.example.okta.testslices.entity
 
 import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
 @Table(
     indexes = [
-        Index(columnList = "score"),
-        Index(columnList = "name")
+        Index(columnList = "username", unique = true)
     ]
 )
-data class StudentScore(
+data class ViewerModel(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     val id: Long,
 
     @Column
-    val name: String,
+    val username: String,
 
     @Column
-    val score: Int,
+    val visits: Int,
 
     @CreationTimestamp
     @Column(updatable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+
+    @UpdateTimestamp
+    @Column
+    val updateAt: LocalDateTime = LocalDateTime.now()
 )

@@ -13,7 +13,7 @@ import java.lang.Exception
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity): Unit = with(http) {
         authorizeRequests().run {
-            mvcMatchers("/all").permitAll()
+            mvcMatchers("/all", "/").permitAll()
             anyRequest().authenticated()
         }
         oauth2Login().run {

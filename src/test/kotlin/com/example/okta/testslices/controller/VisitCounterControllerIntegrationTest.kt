@@ -5,12 +5,13 @@ import com.example.okta.testslices.service.ViewersService
 import org.hamcrest.Matchers.containsStringIgnoringCase
 import org.hamcrest.Matchers.stringContainsInOrder
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.`when`
+import org.mockito.Mockito.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType.TEXT_HTML
-import org.springframework.security.test.context.support.WithMockUser
+import org.springframework.security.oauth2.core.user.OAuth2User
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.oauth2Login
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 
@@ -66,17 +67,34 @@ internal class VisitCounterControllerIntegrationTest {
     }
 
     @Test
-    @WithMockUser("Nikolay")
     fun `greet authenticated user`() {
+        // given
+        val oauth2User = mock(OAuth2User::class.java).also {
+            doReturn("Nikolay").`when`(it).name
+        }
+
         // when
         mockMvc.get("/") {
             accept = TEXT_HTML
+            with(oauth2Login().oauth2User(oauth2User))
         }.andExpect {
             // then
             status { isOk() }
             content {
                 string(containsStringIgnoringCase("G'day, Nikolay"))
             }
+        }
+    }
+
+    @Test
+    fun `signin redirect works`() {
+        // when
+        mockMvc.get("/signin") {
+            accept = TEXT_HTML
+        }.andExpect {
+            // then
+            status { is3xxRedirection() }
+            status { redirectedUrlPattern("**/oauth2/**") }
         }
     }
 }

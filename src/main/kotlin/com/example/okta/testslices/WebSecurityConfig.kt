@@ -14,10 +14,10 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
             anyRequest().authenticated()
         }
         oauth2Login().run {
-            defaultSuccessUrl("/mine")
+            defaultSuccessUrl("/")
         }
         logout().run {
-            logoutSuccessUrl("/all")
+            logoutSuccessUrl("/")
         }
     }
 }

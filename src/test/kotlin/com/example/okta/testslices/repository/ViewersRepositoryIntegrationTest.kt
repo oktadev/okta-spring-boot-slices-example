@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = ANY)
-class ViewersRepositoryTest {
+class ViewersRepositoryIntegrationTest {
     @Autowired
     private lateinit var viewersRepository: ViewersRepository
 

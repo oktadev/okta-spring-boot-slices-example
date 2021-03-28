@@ -8,12 +8,14 @@
 
 <h2>G'day, {{username}}!</h2>
 
-{{totalVisits}} visits so far:
+Visitors table:
 <ul>
     {{#visitors}}
-        <li>{{name}}: {{count}}</li>
+        <li>{{username}}: {{visits}}</li>
     {{/visitors}}
 </ul>
+
+<b>Fun fact</b>: On average, there are {{avgVisitsPerUser}} visits per user
 
 </body>
 </html>

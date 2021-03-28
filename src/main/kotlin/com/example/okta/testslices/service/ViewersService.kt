@@ -2,6 +2,7 @@ package com.example.okta.testslices.service
 
 import com.example.okta.testslices.entity.ViewerModel
 import com.example.okta.testslices.repository.ViewersRepository
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
@@ -10,7 +11,7 @@ class ViewersService(
     private val repo: ViewersRepository
 ) {
     @Transactional
-    fun insertOrIncrement(username: String): ViewerModel {
+    fun insertOrIncrementViews(username: String): ViewerModel {
         // find an existing record for the viewer or create a new one
         val viewer = repo.findByUsername(username)
                 ?: repo.save(ViewerModel(0, username, 0))
@@ -22,12 +23,9 @@ class ViewersService(
         return repo.getOne(viewer.id)
     }
 
-    fun getByUsername(username: String): ViewerModel?
-        = repo.findByUsername(username)
-
     fun averagesViewsPerUser(): Double
         = repo.averageViewsPerUser()
 
-    fun totalUniqueVisitors(): Long
-        = repo.count()
+    fun allViewers(): List<ViewerModel>
+        = repo.findAll(Sort.by(ViewerModel::username.name))
 }

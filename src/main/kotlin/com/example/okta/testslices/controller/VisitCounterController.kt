@@ -25,7 +25,8 @@ class VisitCounterController(
             mapOf(
                 "avgVisitsPerUser" to viewersService.averagesViewsPerUser().toInt(),
                 "username" to myUsername,
-                "visitors" to viewersService.allViewers()
+                "visitors" to viewersService.allViewers(),
+                "isGuest" to user?.username.isNullOrBlank()
             )
         )
     }

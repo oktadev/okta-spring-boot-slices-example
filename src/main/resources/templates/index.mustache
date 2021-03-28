@@ -3,19 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Visit counter</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
 
-<h2>G'day, {{username}}!</h2>
+<body class="antialiased bg-body text-body font-body">
 
-Visitors table:
-<ul>
-    {{#visitors}}
-        <li>{{username}}: {{visits}}</li>
-    {{/visitors}}
-</ul>
+<div class="container mx-auto px-4">
+    <nav class="flex flex-wrap items-center justify-between p-4">
+        <a class="text-xl  font-bold font-heading" href="#">The Viewer Counter</a>
+        <div class="navbar-menu hidden lg:order-3 lg:block w-full lg:w-2/5 lg:text-right">
+            {{#isGuest}}
+                <a class="block lg:inline-block mt-4 lg:mt-0 text-blue-900 hover:text-indigo-600" href="/oauth_login">Sign In</a>
+            {{/isGuest}}
+        </div>
+    </nav>                                       
 
-<b>Fun fact</b>: On average, there are {{avgVisitsPerUser}} visits per user
+    <div class="flex flex-wrap content-between m-20 p-10 ">
+        <div class="bg-white rounded shadow border w-lg p-4 ">
+            <h2 class="text-3xl font-bold mb-4 mt-0">G'day, {{username}}!</h2>
+
+            Visitors table:
+            <ul>
+                {{#visitors}}
+                    <li>{{username}}: {{visits}}</li>
+                {{/visitors}}
+            </ul>
+
+            <b>Fun fact</b>: On average, there are {{avgVisitsPerUser}} visits per user
+
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

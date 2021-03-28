@@ -64,7 +64,7 @@ class ViewersRepositoryIntegrationTest {
 
         // then
         assertThat(viewersRepository.findByUsername("Maya"))
-                .extracting<Int> { it?.visits }
-                .isEqualTo(1001)
+            .extracting<Int> { it?.visits }
+            .isEqualTo(1001)
     }
 }

@@ -11,9 +11,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE
 
-@DataJpaTest(includeFilters = [
-    ComponentScan.Filter(ViewersService::class, type = ASSIGNABLE_TYPE)
-])
+@DataJpaTest(
+    includeFilters = [
+        ComponentScan.Filter(ViewersService::class, type = ASSIGNABLE_TYPE)
+    ]
+)
 @AutoConfigureTestDatabase(replace = ANY)
 internal class ViewersServiceIntegrationTest {
     @Autowired
@@ -54,5 +56,4 @@ internal class ViewersServiceIntegrationTest {
                 assertThat(it.visits).isEqualTo(101)
             }
     }
-
 }

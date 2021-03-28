@@ -14,7 +14,7 @@ class ViewersService(
     fun insertOrIncrementViews(username: String): ViewerModel {
         // find an existing record for the viewer or create a new one
         val viewer = repo.findByUsername(username)
-                ?: repo.save(ViewerModel(0, username, 0))
+            ?: repo.save(ViewerModel(0, username, 0))
 
         // record current visit
         repo.incrementVisit(username)
@@ -23,9 +23,9 @@ class ViewersService(
         return repo.getOne(viewer.id)
     }
 
-    fun averagesViewsPerUser(): Double
-        = repo.averageViewsPerUser()
+    fun averagesViewsPerUser(): Double =
+        repo.averageViewsPerUser()
 
-    fun allViewers(): List<ViewerModel>
-        = repo.findAll(Sort.by(ViewerModel::username.name))
+    fun allViewers(): List<ViewerModel> =
+        repo.findAll(Sort.by(ViewerModel::username.name))
 }

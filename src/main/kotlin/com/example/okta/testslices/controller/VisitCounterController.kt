@@ -1,8 +1,7 @@
-package com.example.okta.testslices.http
+package com.example.okta.testslices.controller
 
 import com.example.okta.testslices.entity.ViewerModel
 import com.example.okta.testslices.service.ViewersService
-import org.springframework.security.core.AuthenticatedPrincipal
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.oauth2.core.user.OAuth2User
@@ -21,11 +20,14 @@ class VisitCounterController(
 
         viewersService.insertOrIncrementViews(myUsername)
 
-        return ModelAndView("index", mapOf(
-            "avgVisitsPerUser" to viewersService.averagesViewsPerUser().toInt(),
-            "username" to myUsername,
-            "visitors" to viewersService.allViewers()
-        ))
+        return ModelAndView(
+            "index",
+            mapOf(
+                "avgVisitsPerUser" to viewersService.averagesViewsPerUser().toInt(),
+                "username" to myUsername,
+                "visitors" to viewersService.allViewers()
+            )
+        )
     }
 
     @GetMapping("/all")
@@ -33,7 +35,6 @@ class VisitCounterController(
 
     @GetMapping("/mine")
     fun getMyScores(@AuthenticationPrincipal user: OAuth2User): String {
-        return "${user.name} ${user.attributes}";
+        return "${user.name} ${user.attributes}"
     }
-
 }

@@ -20,7 +20,7 @@ class ViewersService(
         repo.incrementVisit(username)
 
         // retrieve the most recent version
-        return repo.getOne(viewer.id)
+        return repo.getById(viewer.id)
     }
 
     fun averagesViewsPerUser(): Double =

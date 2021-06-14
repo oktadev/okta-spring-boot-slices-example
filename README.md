@@ -22,8 +22,8 @@ The app is using:
 Start with cloning this repository:
 
 ```
-git clone https://github.com/ruXlab/okta-spring-boot-slices
-cd okta-spring-boot-slices
+git clone https://github.com/oktadev/okta-spring-boot-test-slices-example.git
+cd okta-spring-boot-test-slices-example
 ```
 
 Start local development environment
@@ -35,12 +35,14 @@ In another console start the app
 ```
 ./gradlew bootRun
 ```
-Then, open **http://localhost:8080** in your favorite browser to see service working.
+Then, open `http://localhost:8080` in your favorite browser to see service working.
 
 ## Help
 
-Please post any questions as comments on the [blog post](https://developer.okta.com/blog/2021/04/21/spring-boot-testing-slices), or visit our [Okta Developer Forums](https://devforum.okta.com/).
+Please post any questions as comments on the [blog post][blog-post], or visit our [Okta Developer Forums](https://devforum.okta.com/).
 
 ## License
 
 Apache 2.0, see [LICENSE](LICENSE).
+
+[blog-post]: https://developer.okta.com/blog/2021/04/21/spring-boot-testing-slices

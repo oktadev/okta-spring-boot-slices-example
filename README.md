@@ -26,16 +26,35 @@ git clone https://github.com/oktadev/okta-spring-boot-test-slices-example.git
 cd okta-spring-boot-test-slices-example
 ```
 
-Start local development environment
+### Create an OIDC App
+
+Before you begin, you'll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com/) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`. Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Web** and press **Enter**.
+
+Select **Okta Spring Boot Starter**. Accept the default Redirect URI values provided for you. That is, a Login Redirect of `http://localhost:8080/login/oauth2/code/okta` and a Logout Redirect of `http://localhost:8080`.
+
+## Run Your Spring Boot App
+
+Start local development environment:
+
 ```
 docker-compose -f docker-compose.devenv.yml up
 ```
 
-In another console start the app
+In another console start the app:
+
 ```
 ./gradlew bootRun
 ```
+
 Then, open `http://localhost:8080` in your favorite browser to see service working.
+
+## Test Your Spring Boot App
+
+Run the following command to execute all the tests:
+
+```
+./gradlew test
+```
 
 ## Help
 
